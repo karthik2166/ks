@@ -1,0 +1,17 @@
+node {
+    stage('code clone') { 
+	    git branch: '', credentialsId: 'git', url: 'https://github.com/karthik2166/ks.git'
+		}
+    stage('code clean') {
+        sh 'mvn clean'
+    }
+    stage('Maven Validate') {
+       sh 'mvn validate'
+    }
+	stage('Maven Compile') {
+	   sh 'mvn compile'
+	}
+	stage('Maven Package') {
+	   sh 'mvn package'
+	}   
+}
